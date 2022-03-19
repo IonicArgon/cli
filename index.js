@@ -49,6 +49,45 @@ async function getContinueInput() {
     return answers.continue;
 }
 
+function randomizeGreeting() {
+    // greeting constants
+    const greetingsMorning = [
+        "Good morning! I'm",
+        "Bonjour! Je m'appelle",
+        "Buenos días! Soy",
+        "Guten Morgen! Ich bin",
+        "Buongiorno! Sono",
+    ];
+
+    const greetingsAfternoon = [
+        "Good afternoon! I'm",
+        "Bonne après-midi! Je m'appelle",
+        "Buenas tardes! Soy",
+        "Guten Tag! Ich bin",
+        "Buon pomeriggio! Sono",
+    ];
+
+    const greetingsEvening = [
+        "Good evening! I'm",
+        "Bonsoir! Je m'appelle",
+        "Buenas noches! Soy",
+        "Guten Abend! Ich bin",
+        "Buonasera! Sono",
+    ];
+    
+    // get time of day
+    const time = new Date().getHours();
+
+    // return greeting based on time of day
+    if (time >= 0 && time < 12) {
+        return greetingsMorning[Math.floor(Math.random() * greetingsMorning.length)];
+    } else if (time >= 12 && time < 18) {
+        return greetingsAfternoon[Math.floor(Math.random() * greetingsAfternoon.length)];
+    } else {
+        return greetingsEvening[Math.floor(Math.random() * greetingsEvening.length)];
+    }
+}
+
 function sleep(ms = 1) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -66,7 +105,7 @@ async function main() {
             console.log( chalk.red( err ) );
             return;
         }
-        console.log("Hey, my" + chalk.magenta(" name ") + "is");
+        console.log(randomizeGreeting());
         console.log( gradient.teen( data ) );
         console.log("It's nice meeting you!");
     });
