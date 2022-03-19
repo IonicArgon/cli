@@ -1,5 +1,5 @@
 {
-  "name": "marco-cli",
+  "name": "marco-tan-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "chalk": "^5.0.1",
     "figlet": "^1.5.2",
     "gradient-string": "^2.0.0",
